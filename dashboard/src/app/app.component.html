@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>IMPRESSORAS - CONTAGEM DE MENSAL DE IMPRESSÕES</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <form>
+        <mat-form-field appearance="outline">
+          <mat-label>Ano:</mat-label>
+          <mat-select name="fyear" [(ngModel)]="fyear" >
+            <mat-option *ngFor="let i of years" value="{{ i }}">{{ i }} </mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+        &nbsp;&nbsp;
+
+        <mat-form-field appearance="outline">
+          <mat-label>Mês:</mat-label>
+          <mat-select name="fmonth" [(ngModel)]="fmonth">
+            <mat-option *ngFor="let m of months" value="{{ m }}">{{ m }} </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        &nbsp;&nbsp;
+
+        <button mat-raised-button color="warn" (click)="onClick_reload()">Carregar</button>
+      </form>
+    </div>
+  </div>
+  
+{{  fyear | json }}
+{{  fmonth | json }}
+  
+
+  <div class="row">
+    <div ></div>
+  </div>
+
+</div>
+
