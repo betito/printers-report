@@ -33,12 +33,23 @@
     </div>
   </div>
   
-{{  fyear | json }}
-{{  fmonth | json }}
-  
-
   <div class="row">
-    <div ></div>
+    <div >
+      <table *ngIf="table_content.length" datatable [dtOptions]="dtOptions" class="table hover">
+        <thead>
+          <tr>
+            <th>IMPRESSORA</th>
+            <th>TOTAL EM {{ fmonth }} / {{ fyear }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dt of table_content">
+            <td>{{ dt.name }}</td>
+            <td>{{ dt.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>
