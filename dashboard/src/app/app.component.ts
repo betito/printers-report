@@ -61,15 +61,24 @@ export class AppComponent implements OnInit {
     this.table_content.splice(0);
     fetch('/assets/bases/'+m+'-'+y+'.csv').then(res => res.text())
       .then(result => {
-        let all_lines = result.split(/\n/);
-        for (var line of all_lines){
-          console.log(line);
-          this.csv_content.push(line);
-          let kv = line.split(',');
-          console.log (kv[0] + " :: " + kv[1]);
-          this.table_content.push(new Printerx(kv[0], kv[1]));
+
+        if (result.includes('Cannot GET') == true){
+          alert('Fetch Error : NOT FOUND!');
+        }else{
+          let all_lines = result.split(/\n/);
+          for (var line of all_lines){
+            console.log(line);
+            this.csv_content.push(line);
+            let kv = line.split(',');
+            console.log (kv[0] + " :: " + kv[1]);
+            this.table_content.push(new Printerx(kv[0], kv[1]));
+          }
         }
-    });
+      })
+      .catch(function(err)
+      {
+       alert('Fetch Error : NOT FOUND!');
+      });
   }
 
   
