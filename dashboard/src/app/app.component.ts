@@ -23,10 +23,13 @@ export class AppComponent implements OnInit {
 
     this.dtOptions = {
       pagingType: 'full_numbers',
-      paging: true,
       pageLength: 50,
       bSort: false,
       dom: 'Bfrtip',
+      paging: false,
+      fixedColumns: {
+        heightMatch: 'none'
+      },
       buttons: [
         'copy',
         'print',

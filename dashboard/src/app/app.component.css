@@ -4,3 +4,12 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+
+  .font8 {
+    font-size: 8pt;
+  }
+
+  table.dataTable tbody th, table.dataTable tbody td {
+    padding: 3px 3px;
+}
+
