@@ -57,35 +57,37 @@ export class AppComponent implements OnInit {
   }
 
   public onClick_reload(){
-    console.log("Reloading data...");
-    console.log (this.fyear);
-    console.log (this.fmonth);
+    // console.log("Reloading data...");
+    // console.log (this.fyear);
+    // console.log (this.fmonth);
     this.openFile(this.fmonth.toLowerCase(), this.fyear);
   }
 
   onChange(valueD : any){
     this.openFile(this.fmonth.toLowerCase(), this.fyear);
-    console.log("Caiu no updateData :: " + valueD);
+    // console.log("Caiu no updateData :: " + valueD);
   }
 
 
   openFile (m : string, y : string){
 
-    console.log ('/assets/bases/'+m+'-'+y+'.csv');
+    console.log ('./assets/bases/'+m+'-'+y+'.csv');
     this.table_content.splice(0);
-    fetch('/assets/bases/'+m+'-'+y+'.csv').then(res => res.text())
+    fetch('./assets/bases/'+m+'-'+y+'.csv').then(res => res.text())
       .then(result => {
-
-        if (result.includes('Cannot GET') == true){
+        // console.log("RESULT :: " + result);
+        if (result.includes("<!DOCTYPE") == true){
           alert('Fetch Error : NOT FOUND!');
         }else{
           let all_lines = result.split(/\n/);
           for (var line of all_lines){
-            console.log(line);
+
+            // console.log(line);
             let kv = line.split(',');
-            console.log (kv[0] + " :: " + kv[1]);
+            // console.log (kv[0] + " :: " + kv[1]);
             let element : IPrinter  =  { name : kv[0], total : kv[1] };
             this.table_content.push({ name : kv[0], total : kv[1] });
+            
           }
         }
       })
