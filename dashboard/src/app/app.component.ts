@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Printerx } from './models/year-month';
 
+
+export interface IPrinter {
+  name : string;
+  total : string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,13 +15,14 @@ import { Printerx } from './models/year-month';
 export class AppComponent implements OnInit {
   title = 'dashboard - contagem de impressões mensais por setor';
 
+  displayedColumns: string[] = ['name', 'total'];
+
   years : string [] = ["2022", "2023"];
   months : string [] = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 
                         'JULHO', 'AGOSTO','SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
   fyear !: any;
   fmonth !: any;
-  table_content : Printerx [] = [];
-  csv_content : string [] = [];
+  table_content : IPrinter [] = [];
   dtOptions: any = {};
 
   constructor (){
@@ -57,10 +63,15 @@ export class AppComponent implements OnInit {
     this.openFile(this.fmonth.toLowerCase(), this.fyear);
   }
 
+  onChange(valueD : any){
+    this.openFile(this.fmonth.toLowerCase(), this.fyear);
+    console.log("Caiu no updateData :: " + valueD);
+  }
+
+
   openFile (m : string, y : string){
 
     console.log ('/assets/bases/'+m+'-'+y+'.csv');
-    this.csv_content.splice(0);
     this.table_content.splice(0);
     fetch('/assets/bases/'+m+'-'+y+'.csv').then(res => res.text())
       .then(result => {
@@ -71,10 +82,10 @@ export class AppComponent implements OnInit {
           let all_lines = result.split(/\n/);
           for (var line of all_lines){
             console.log(line);
-            this.csv_content.push(line);
             let kv = line.split(',');
             console.log (kv[0] + " :: " + kv[1]);
-            this.table_content.push(new Printerx(kv[0], kv[1]));
+            let element : IPrinter  =  { name : kv[0], total : kv[1] };
+            this.table_content.push({ name : kv[0], total : kv[1] });
           }
         }
       })

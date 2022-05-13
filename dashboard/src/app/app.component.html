@@ -12,7 +12,7 @@
       <form>
         <mat-form-field appearance="outline">
           <mat-label>Ano:</mat-label>
-          <mat-select name="fyear" [(ngModel)]="fyear" >
+          <mat-select name="fyear" [(ngModel)]="fyear" (ngModelChange)="onChange($event)" >
             <mat-option *ngFor="let i of years" value="{{ i }}">{{ i }} </mat-option>
           </mat-select>
         </mat-form-field>
@@ -21,21 +21,20 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Mês:</mat-label>
-          <mat-select name="fmonth" [(ngModel)]="fmonth">
+          <mat-select name="fmonth" [(ngModel)]="fmonth" (ngModelChange)="onChange($event)" >
             <mat-option *ngFor="let m of months" value="{{ m }}">{{ m }} </mat-option>
           </mat-select>
         </mat-form-field>
 
         &nbsp;&nbsp;
 
-        <button mat-raised-button color="warn" (click)="onClick_reload()">Carregar</button>
+        <!--<button mat-raised-button color="warn" (click)="onClick_reload()">Carregar</button>-->
       </form>
     </div>
   </div>
-  
   <div class="row">
     <div >
-      <table *ngIf="table_content.length" datatable [dtOptions]="dtOptions" class="table hover font8">
+      <table *ngIf="table_content.length" datatable [dtOptions]="dtOptions" class="mat-elevation-z18">
         <thead>
           <tr>
             <th>IMPRESSORA</th>
@@ -49,6 +48,8 @@
           </tr>
         </tbody>
       </table>
+
+
     </div>
   </div>
 

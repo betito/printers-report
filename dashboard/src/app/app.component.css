@@ -9,7 +9,16 @@
     font-size: 8pt;
   }
 
-  table.dataTable tbody th, table.dataTable tbody td {
+/*table.dataTable tbody th, table.dataTable tbody td {
     padding: 3px 3px;
+}*/
+
+
+table {
+  width: 100%;
 }
 
+table tr td {
+  border-bottom: 1px lightgray;
+  border-top: 1px solid lightgray;
+}
