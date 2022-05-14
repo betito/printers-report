@@ -29,10 +29,10 @@ export class AppComponent implements OnInit {
 
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 50,
+      pageLength: 20,
       bSort: false,
       dom: 'Bfrtip',
-      paging: false,
+      paging: true,
       fixedColumns: {
         heightMatch: 'none'
       },
@@ -85,6 +85,7 @@ export class AppComponent implements OnInit {
             // console.log(line);
             let kv = line.split(',');
             // console.log (kv[0] + " :: " + kv[1]);
+            kv[0] = kv[0].replace(/#38;/,'')
             let element : IPrinter  =  { name : kv[0], total : kv[1] };
             this.table_content.push({ name : kv[0], total : kv[1] });
             
