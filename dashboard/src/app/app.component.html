@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
+    <div class="col-8">
       <form>
         <mat-form-field appearance="outline">
           <mat-label>Ano:</mat-label>
@@ -30,6 +30,13 @@
 
         <!--<button mat-raised-button color="warn" (click)="onClick_reload()">Carregar</button>-->
       </form>
+      
+    </div>
+    <div class="col-2">
+      <div class="{{ color_color }} inlinex">TOTAL P&B :: <b>{{ pb_total }}</b></div>
+    </div>
+    <div class="col-2">
+      <div class="{{ pb_color }}">TOTAL COLOR :: <b>{{ color_total }}</b></div>
     </div>
   </div>
   <div class="row">
@@ -37,14 +44,16 @@
       <table *ngIf="table_content.length" datatable [dtOptions]="dtOptions" class="mat-elevation-z18">
         <thead>
           <tr>
-            <th>IMPRESSORA (CENTRO DE CUSTO)</th>
-            <th>TOTAL EM {{ fmonth }} / {{ fyear }}</th>
+            <th>CENTRO DE CUSTO (PRÉDIO)</th>
+            <th>CAMPI</th>
+            <th>TOTAL EM {{ fmonth }} / {{ fyear }} (%)</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let dt of table_content">
             <td>{{ dt.name }}</td>
-            <td>{{ dt.total }}</td>
+            <td>{{ dt.campi }}</td>
+            <td><div class="{{ dt.colorx }} center">{{ dt.total }}</div></td>
           </tr>
         </tbody>
       </table>

@@ -22,3 +22,33 @@ table tr td {
   border-bottom: 1px lightgray;
   border-top: 1px solid lightgray;
 }
+
+
+.center {
+  text-align: center;
+}
+
+.success {
+  border : green;
+  background-color: green;
+  color : white;
+  font-size: bolder;
+}
+
+.warning {
+  border : orange;
+  background-color: orange;
+  color : black;
+  font-size: bolder;
+}
+
+.alert {
+  border : red;
+  background-color: red;
+  color : white;
+  font-size: bolder;
+}
+
+.inlinex {
+  display: inline-block;
+}
