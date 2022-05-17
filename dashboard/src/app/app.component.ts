@@ -123,6 +123,7 @@ export class AppComponent implements OnInit {
                 }
 
                 this.color_total += totalx;
+                
               }else {
                 range = (totalx/this.max_pb);
                 if (range <= 0.5){
