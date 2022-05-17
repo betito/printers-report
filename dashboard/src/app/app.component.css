@@ -32,23 +32,34 @@ table tr td {
   border : green;
   background-color: green;
   color : white;
-  font-size: bolder;
+  font-weight: bold;
 }
 
 .warning {
   border : orange;
   background-color: orange;
   color : black;
-  font-size: bolder;
+  font-weight: bold;
 }
 
 .alert {
   border : red;
   background-color: red;
   color : white;
-  font-size: bolder;
+  font-weight: bold;
+}
+
+.purple {
+  border : purple;
+  background-color: purple;
+  color : white;
+  font-weight: bold;
 }
 
 .inlinex {
   display: inline-block;
+}
+
+.paddingx {
+  padding-top: 20px;
 }

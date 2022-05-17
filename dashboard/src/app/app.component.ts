@@ -112,22 +112,27 @@ export class AppComponent implements OnInit {
                 // console.log('*********     TOTAL   **********');
                 // console.log(totalx);
                 // console.log(range);
-                if (range <= 0.50){
+                if (range <= 0.5){
                   corx = 'success';
                 }else if (range <= 0.8){
                   corx  = 'warning';
-                }else if (range > 0.8){
+                }else if ((range > 0.8) && (range <= 1.0)){
                   corx = 'alert';
+                }else if (range > 1.0){
+                  corx = 'purple';
                 }
+
                 this.color_total += totalx;
               }else {
                 range = (totalx/this.max_pb);
-                if (range <= 0.50){
+                if (range <= 0.5){
                   corx = 'success';
                 }else if (range <= 0.8){
                   corx  = 'warning';
-                }else if (range > 0.8){
+                }else if ((range > 0.8) && (range <= 1.0)){
                   corx = 'alert';
+                }else if (range > 1.0){
+                  corx = 'purple';
                 }
 
                 this.pb_total += totalx;
@@ -141,21 +146,25 @@ export class AppComponent implements OnInit {
             
           }
           var tmp_range = this.pb_total/(this.max_pb * 32);
-          if (tmp_range <= 0.50){
+          if (tmp_range <= 0.5){
             this.pb_color = 'success';
           }else if (tmp_range <= 0.8){
             this.pb_color  = 'warning';
-          }else if (tmp_range > 0.8){
+          }else if ((tmp_range > 0.8) && (tmp_range <= 1.0)){
             this.pb_color = 'alert';
+          }else if (tmp_range > 1.0){
+            this.pb_color = 'purple';
           }
 
           tmp_range = this.color_total/(this.max_color * 5);
-          if (tmp_range <= 0.50){
+          if (tmp_range <= 0.5){
             this.color_color = 'success';
           }else if (tmp_range <= 0.8){
             this.color_color  = 'warning';
-          }else if (tmp_range > 0.8){
+          }else if ((tmp_range > 0.8) && (tmp_range <= 1.0)){
             this.color_color = 'alert';
+          }else if (tmp_range > 1.0){
+            this.color_color = 'purple';
           }
 
         }
