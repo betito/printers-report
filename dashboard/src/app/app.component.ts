@@ -46,6 +46,17 @@ export class AppComponent implements OnInit {
       fixedColumns: {
         heightMatch: 'none'
       },
+      language: {
+        "search": "Filtrar:",
+        "info": "Página _PAGE_ de _PAGES_",
+        "zeroRecords": "Nada para mostrar",
+        "paginate": {
+          "first":      "Primeiro",
+          "last":       "Último",
+          "next":       "Próximo",
+          "previous":   "Anterior"
+        },
+      },
       buttons: [
         'copy',
         'print',
@@ -63,6 +74,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.onClick_reload();
     
   }
 
