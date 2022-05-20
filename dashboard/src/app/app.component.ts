@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Printerx } from './models/year-month';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAboutComponent } from './dialog-about/dialog-about.component';
 
 
 export interface IPrinter {
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
   max_color : number = 600;
   max_pb : number = 2500;
 
-  constructor (){
+  constructor (private about : MatDialog){
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -126,13 +127,13 @@ export class AppComponent implements OnInit {
                 // console.log(totalx);
                 // console.log(range);
                 if (range <= 0.5){
-                  corx = 'success';
+                  corx = 'xsuccess';
                 }else if (range <= 0.8){
-                  corx  = 'warning';
+                  corx  = 'xwarning';
                 }else if ((range > 0.8) && (range <= 1.0)){
-                  corx = 'alert';
+                  corx = 'xalert';
                 }else if (range > 1.0){
-                  corx = 'purple';
+                  corx = 'xpurple';
                 }
 
                 this.color_total += totalx;
@@ -140,13 +141,13 @@ export class AppComponent implements OnInit {
               }else {
                 range = (totalx/this.max_pb);
                 if (range <= 0.5){
-                  corx = 'success';
+                  corx = 'xsuccess';
                 }else if (range <= 0.8){
-                  corx  = 'warning';
+                  corx  = 'xwarning';
                 }else if ((range > 0.8) && (range <= 1.0)){
-                  corx = 'alert';
+                  corx = 'xalert';
                 }else if (range > 1.0){
-                  corx = 'purple';
+                  corx = 'xpurple';
                 }
 
                 this.pb_total += totalx;
@@ -161,24 +162,24 @@ export class AppComponent implements OnInit {
           }
           var tmp_range = this.pb_total/(this.max_pb * 32);
           if (tmp_range <= 0.5){
-            this.pb_color = 'success';
+            this.pb_color = 'xsuccess';
           }else if (tmp_range <= 0.8){
-            this.pb_color  = 'warning';
+            this.pb_color  = 'xwarning';
           }else if ((tmp_range > 0.8) && (tmp_range <= 1.0)){
-            this.pb_color = 'alert';
+            this.pb_color = 'xalert';
           }else if (tmp_range > 1.0){
-            this.pb_color = 'purple';
+            this.pb_color = 'xpurple';
           }
 
           tmp_range = this.color_total/(this.max_color * 5);
           if (tmp_range <= 0.5){
-            this.color_color = 'success';
+            this.color_color = 'xsuccess';
           }else if (tmp_range <= 0.8){
-            this.color_color  = 'warning';
+            this.color_color  = 'xwarning';
           }else if ((tmp_range > 0.8) && (tmp_range <= 1.0)){
-            this.color_color = 'alert';
+            this.color_color = 'xalert';
           }else if (tmp_range > 1.0){
-            this.color_color = 'purple';
+            this.color_color = 'xpurple';
           }
 
         }
@@ -187,6 +188,18 @@ export class AppComponent implements OnInit {
       {
        alert('Fetch Error : NOT FOUND!');
       });
+  }
+
+  openAbout (){
+
+    console.log("Opening about !!!");
+    const dialogRef = this.about.open(DialogAboutComponent, {
+      width: '50%',
+      data: {}
+    }).afterClosed().subscribe({
+      
+    });
+
   }
   
 }

@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material/material.module';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { DialogAboutComponent } from './dialog-about/dialog-about.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogAboutComponent
   ],
   imports: [
     BrowserModule,

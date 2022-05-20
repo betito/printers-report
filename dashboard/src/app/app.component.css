@@ -28,25 +28,25 @@ table tr td {
   text-align: center;
 }
 
-.success {
+.xsuccess {
   border : 1px solid rgb(4, 117, 4);
   background-color: rgb(4, 146, 4);
   color : white;
 }
 
-.warning {
+.xwarning {
   border : 1px solid yellow;
   background-color: orange;
   color : black;
 }
 
-.alert {
+.xalert {
   border : 1px solid red;
   background-color: lightcoral;
   color : white;
 }
 
-.purple {
+.xpurple {
   border : 1px solid lightcyan;
   background-color: purple;
   color : white;
