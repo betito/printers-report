@@ -8,6 +8,7 @@ export interface IPrinter {
   campi : string;
   total : string;
   colorx : string;
+  percent : string;
 }
 @Component({
   selector: 'app-root',
@@ -23,6 +24,36 @@ export class AppComponent implements OnInit {
   years : string [] = ["2022", "2023"];
   months : string [] = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 
                         'JULHO', 'AGOSTO','SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
+  campis = new Map <string, string> (
+    [
+      ['BADPI','C2'],
+      ['BIOTÉRIO','C1'],
+      ['CLIAMB','C1'],
+      ['COAES','C1'],
+      ['COAPF','C1'],
+      ['COATL','C1'],
+      ['COBIO','C1'],
+      ['COCAP','C1'],
+      ['V8','C3'],
+      ['COCIN','C1'],
+      ['COETI','C1'],
+      ['COGPE','C1'],
+      ['COLECOES','C2'],
+      ['COPES','C1'],
+      ['COSAS','C1'],
+      ['COTEI','C1'],
+      ['COTIN','C1'],
+      ['DIR','C1'],
+      ['LBA','C2'],
+      ['LTBM','C2'],
+      ['LTMN','C2'],
+      ['SEDAB','C1'],
+      ['SEMPC','C1'],
+      ['SEOFI','C1'],
+      ['EDITORA','C1'],
+      ['DIEAR','C1'],
+      ['INCUBADORA','C1']
+    ]);
   fyear !: any;
   fmonth !: any;
   table_content : IPrinter [] = [];
@@ -101,7 +132,7 @@ export class AppComponent implements OnInit {
       .then(result => {
         // console.log("RESULT :: " + result);
         if (result.includes("<!DOCTYPE") == true){
-          alert('Fetch Error : NOT FOUND!');
+          alert('ARQUIVO DE DADOS NÃO ENCONTRADO!');
         }else{
           
           this.pb_total = 0;
@@ -155,8 +186,20 @@ export class AppComponent implements OnInit {
 
               xxx = ((range * 100).toFixed(0)).toString();
 
-              let element : IPrinter  =  { name : kv[0], campi : kv[2], total : kv[1] + " (" + xxx + "%)", colorx : corx };
-              this.table_content.push({ name : kv[0], campi : kv[2], total : kv[1] + " (" + xxx + "%)", colorx : corx });
+              let campi_tmp = '';
+
+              for (let campi of this.campis.entries())
+              {
+                //console.log(kv[0] + ' :: ' + campi[0] + ' :: ' + campi[1]);
+                if (kv[0].toLowerCase().includes(campi[0].toLowerCase())){
+                  campi_tmp = campi[1];
+                }
+              }
+              
+              // let element : IPrinter  =  { name : kv[0], campi : campi_tmp, total : kv[1] + " (" + xxx + "%)", colorx : corx };
+              // this.table_content.push({ name : kv[0], campi : campi_tmp, total : kv[1] + " (" + xxx + "%)", colorx : corx });
+              let element : IPrinter  =  { name : kv[0], campi : campi_tmp, total : kv[1], colorx : corx, percent : xxx + "%" };
+              this.table_content.push({ name : kv[0], campi : campi_tmp, total : kv[1], colorx : corx, percent : xxx + "%" });
             }
             
           }
@@ -186,7 +229,7 @@ export class AppComponent implements OnInit {
       })
       .catch(function(err)
       {
-       alert('Fetch Error : NOT FOUND!');
+       alert('ARQUIVO DE DADOS NÃO ENCONTRADO!');
       });
   }
 

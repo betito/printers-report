@@ -47,6 +47,7 @@
             <th>CENTRO DE CUSTO (PRÉDIO)</th>
             <th>CAMPI</th>
             <th>TOTAL EM {{ fmonth }} / {{ fyear }} (%)</th>
+            <th>%</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +55,7 @@
             <td>{{ dt.name }}</td>
             <td>{{ dt.campi }}</td>
             <td><div class="{{ dt.colorx }} center">{{ dt.total }}</div></td>
+            <td><div class="{{ dt.colorx }} center">{{ dt.percent }}</div></td>
           </tr>
         </tbody>
       </table>
